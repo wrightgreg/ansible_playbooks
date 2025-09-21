@@ -3,13 +3,15 @@
   hosts: all
   become:  no
   vars:
-    email_to: "unix_admin@rackroom.com"
+    email_to: "greg.wright@rackroom.com"
     email_subject: "{{ ansible_hostname }} was successfully updated and rebooted"
     email_body: "The hostname {{ ansible_hostname }} has been successfully updated and the system has been rebooted."
 
   tasks:
     - name: Send email notification
-      ansible.builtin.shell: |
-       echo "{{ mail_body }}" | mail -s "{{ mail_subject }}" {{ admin_email }}
-      args:
-        executable: /bin/bash
+      ansible.builtin.mail:
+        host: localhost
+        port: 25
+        to: greg.wright@rackroom.com
+        subject: "Server Reboot Successful"
+        body: "The server {{ inventory_hostname }} was rebooted successfully."
