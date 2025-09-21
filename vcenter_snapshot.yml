@@ -1,7 +1,7 @@
 ---
 - name: Take VMware Snapshot of a VM
   hosts: all
-  gather_facts: yes
+  gather_facts: no
   vars:
     vcenter_hostname: "rrvcenter01.local.rackroom.com/"
     vcenter_username: "greg.wright@rackroom.com"
@@ -23,4 +23,3 @@
         state: present
         snapshot_name: "{{ snapshot_name }}"
         description: "{{ snapshot_description }}"
-        quiesce: true
