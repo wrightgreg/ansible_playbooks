@@ -1,0 +1,17 @@
+---
+- name: Notify UNIX Admin of Hostname Update and Reboot
+  hosts: localhost
+  gather_facts: false
+  vars:
+    email_to: "greg.wright@rackroom.com"
+    email_subject: "{{ ansible_hostname }} was successfully updated and rebooted"
+    email_body: "The hostname {{ ansible_hostname }} has been successfully updated and the system has been rebooted."
+
+  tasks:
+    - name: Send notification email
+      community.general.mail:
+        host: "localhost"
+        port: 25
+        to: "{{ email_to }}"
+        subject: "{{ email_subject }}"
+        body: "{{ email_body }}"
