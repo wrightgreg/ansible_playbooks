@@ -13,7 +13,7 @@
 
   tasks:
     - name: Take snapshot of VM
-      community.vmware.vmware.vm_snapshot:
+      vmware.vmware.vm_snapshot:
         hostname: "{{ vcenter_hostname }}"
         username: "{{ vcenter_username }}"
         password: "{{ vcenter_password }}"
