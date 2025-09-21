@@ -23,3 +23,5 @@
         state: present
         snapshot_name: "{{ snapshot_name }}"
         description: "{{ snapshot_description }}"
+        memory: false
+        quiesce: true
