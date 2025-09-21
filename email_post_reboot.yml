@@ -1,6 +1,6 @@
 ---
 - name: Notify UNIX Admin of Hostname Update and Reboot
-  hosts: localhost
+  hosts: all
   become:  yes
   vars:
     email_to: "greg.wright@rackroom.com"
@@ -10,8 +10,6 @@
   tasks:
     - name: Send email notification
       community.general.mail:
-        host: "localhost"
-        port: 25
         to: "{{ email_to }}"
         subject: "{{ email_subject }}"
         body: "{{ email_body }}"
