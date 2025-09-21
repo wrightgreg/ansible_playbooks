@@ -18,7 +18,8 @@
         username: "{{ vcenter_username }}"
         password: "{{ vcenter_password }}"
         validate_certs: "{{ validate_certs }}"
-        name: "/RackRoomWin/Synergy_DaaS/{{ vm_name }}"
+        folder: "/RackRoomWin/Synergy_DaaS/"
+        name: "{{ vm_name }}"
         state: present
         snapshot_name: "{{ snapshot_name }}"
         description: "{{ snapshot_description }}"
