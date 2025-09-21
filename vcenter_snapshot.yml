@@ -7,8 +7,8 @@
     vcenter_username: "greg.wright@rackroom.com"
     vcenter_password: "IP1923qe@"
     vm_name: "hqriu02"
-    snapshot_name: "Snapshot_{{ ansible_date_time.iso8601 }}"
-    snapshot_description: "Snapshot taken via Ansible on {{ ansible_date_time.iso8601 }}"
+    snapshot_name: "Snapshot_ansible_premier"
+    snapshot_description: "Snapshot taken via Ansible"
     validate_certs: false
 
   tasks:
