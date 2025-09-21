@@ -1,7 +1,7 @@
 ---
 - name: Notify UNIX Admin of Hostname Update and Reboot
   hosts: all
-  become:  yes
+  become:  no
   vars:
     email_to: "greg.wright@rackroom.com"
     email_subject: "{{ ansible_hostname }} was successfully updated and rebooted"
