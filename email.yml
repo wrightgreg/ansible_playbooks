@@ -1,0 +1,10 @@
+---
+- name: Send /etc/hosts via email
+  hosts: all
+  become: true
+  tasks:
+    - name: Send /etc/hosts content via email
+      shell: |
+        cat /etc/hosts | mail -vv -s "test.$(hostname)" greg.wright@rackroom.com
+      args:
+        executable: /bin/bash
