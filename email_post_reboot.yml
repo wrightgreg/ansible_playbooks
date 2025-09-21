@@ -15,3 +15,4 @@
         to: "{{ email_to }}"
         subject: "{{ email_subject }}"
         body: "{{ email_body }}"
+      delegate_to: localhost
