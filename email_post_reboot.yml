@@ -21,4 +21,3 @@
         subject: "{{ subject }}"
         body: |
           The server {{ hostname_result.stdout }} has rebooted successfully.
-      delegate_to: localhost
