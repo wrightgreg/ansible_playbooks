@@ -1,0 +1,8 @@
+---
+- name: Run DNF update with --allowerasing
+  hosts: all
+  become: true
+  tasks:
+    - name: Update all packages with dnf and allow erasing
+      ansible.builtin.command:
+        cmd: dnf update -y --allowerasing
