@@ -1,9 +1,12 @@
+
 ---
 - name: Notify server reboot success
   hosts: all
   become: yes
   vars:
     email_to: "greg.wright@rackroom.com"
+    smtp_host: "mailhub.rackroom.com"
+    smtp_port: 25
     subject: "Server Reboot Successful"
   tasks:
     - name: Get hostname
@@ -12,7 +15,10 @@
 
     - name: Send email notification
       community.general.mail:
+        host: "{{ smtp_host }}"
+        port: "{{ smtp_port }}"
         to: "{{ email_to }}"
         subject: "{{ subject }}"
-        body: The server {{ hostname_result.stdout }} has rebooted successfully.
+        body: |
+          The server {{ hostname_result.stdout }} has rebooted successfully.
       delegate_to: localhost
