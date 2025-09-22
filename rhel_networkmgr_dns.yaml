@@ -1,6 +1,6 @@
 ---
 - name: Disable NetworkManager DNS control on RHEL clients
-  hosts: rhel_clients
+  hosts: all
   become: yes
   tasks:
  
