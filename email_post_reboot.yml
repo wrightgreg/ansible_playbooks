@@ -14,6 +14,5 @@
       community.general.mail:
         to: "{{ email_to }}"
         subject: "{{ subject }}"
-        body: |
-          The server {{ hostname_result.stdout }} has rebooted successfully.
+        body: The server {{ hostname_result.stdout }} has rebooted successfully.
       delegate_to: localhost
