@@ -4,7 +4,7 @@
   hosts: all
   become: yes
   vars:
-    email_to: "greg.wright@rackroom.com"
+    email_to: "unix_admin@rackroom.com"
     subject: "Server Reboot Successful"
   tasks:
     - name: Get hostname
