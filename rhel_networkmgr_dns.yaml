@@ -1,0 +1,39 @@
+---
+- name: Disable NetworkManager DNS control on RHEL clients
+  hosts: rhel_clients
+  become: yes
+  tasks:
+
+    - name: Ensure NetworkManager config directory exists
+      file:
+        path: /etc/NetworkManager/conf.d
+        state: directory
+        mode: '0755'
+
+    - name: Disable DNS management by NetworkManager
+      copy:
+        dest: /etc/NetworkManager/conf.d/no-resolv.conf
+        content: |
+          [main]
+          dns=none
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Restart NetworkManager to apply changes
+      systemd:
+        name: NetworkManager
+        state: restarted
+        enabled: yes
+
+    - name: Ensure /etc/resolv.conf has desired DNS entries
+      copy:
+        dest: /etc/resolv.conf
+        content: |
+          domain rackroo.com
+          nameserver 10.1.254.3
+          nameserver 10.1.254.1
+          options timeout:1 attempts:2
+        owner: root
+        group: root
+        mode: '0644'
