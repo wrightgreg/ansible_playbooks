@@ -1,0 +1,27 @@
+---
+- name: Take VMware Snapshot of a VM
+  hosts: all
+  become: false
+  gather_facts: no
+  vars:
+    vcenter_hostname: "rrvcenter01.rackroom.com"
+    vcenter_username: "Administrator@vsphere.local"
+    vcenter_password: "RRvcsa@8310"
+    datacenter_name: "RackRoomWin"
+    vm_name: "hqriu02"
+    snapshot_name: "Snapshot_ansible_premier"
+    snapshot_description: "Snapshot taken via Ansible"
+
+  tasks:
+    - name: Take snapshot of VM
+      vmware.vmware.vm_snapshot:
+        hostname: "{{ vcenter_hostname }}"
+        username: "{{ vcenter_username }}"
+        password: "{{ vcenter_password }}"
+        datacenter: "{{ datacenter_name }}"
+        folder: "/{{ datacenter_name }}/"
+        name: "{{ vm_name }}"
+        state: present
+        snapshot_name: "{{ snapshot_name }}"
+        description: "{{ snapshot_description }}"
+      delegate_to: localhost
