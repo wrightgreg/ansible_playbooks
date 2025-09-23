@@ -4,7 +4,7 @@
   become: true
   gather_facts: no
   vars:
-    vcenter_hostname: "rrvcenter01.local.rackroom.com/"
+    vcenter_hostname: "192.168.206.60"
     vcenter_username: "Administrator@vsphere.local"
     vcenter_password: "RRvcsa@8310"
     datacenter_name: "RackRoomWin"
