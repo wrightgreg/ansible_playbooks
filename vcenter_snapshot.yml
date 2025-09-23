@@ -2,6 +2,9 @@
 - name: Take VMware Snapshot of a VM
   hosts: all
   gather_facts: no
+  collections:
+    - community.vmware
+
   vars:
     vcenter_hostname: "rrvcenter01.local.rackroom.com/"
     vcenter_username: "greg.wright@rackroom.com"
@@ -13,7 +16,7 @@
 
   tasks:
     - name: Take snapshot of VM
-      vmware.vmware.vm_snapshot:
+      community.vmware.vmware_guest_snapshot:
         hostname: "{{ vcenter_hostname }}"
         username: "{{ vcenter_username }}"
         password: "{{ vcenter_password }}"
