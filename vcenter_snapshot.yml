@@ -11,7 +11,6 @@
     vm_name: "hqriu02"
     snapshot_name: "Snapshot_ansible_premier"
     snapshot_description: "Snapshot taken via Ansible"
-    validate_certs: false
 
   tasks:
     - name: Take snapshot of VM
@@ -20,7 +19,6 @@
         username: "{{ vcenter_username }}"
         password: "{{ vcenter_password }}"
         datacenter: "{{ datacenter_name }}"
-        validate_certs: "{{ validate_certs }}"
         folder: "/{{ datacenter_name }}/Synergy_DaaS/"
         name: "{{ vm_name }}"
         state: present
