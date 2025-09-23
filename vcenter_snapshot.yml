@@ -1,6 +1,6 @@
 ---
 - name: Take VMware Snapshot of a VM
-  hosts: localhost
+  hosts: all
   become: false
   gather_facts: no
   collections:
@@ -29,4 +29,5 @@
         state: present
         snapshot_name: "{{ snapshot_name }}"
         description: "{{ snapshot_description }}"
+     delegate_to: localhost
 
