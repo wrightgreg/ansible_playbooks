@@ -2,7 +2,7 @@
 - name: Take VMware Snapshot of a VM
   hosts: all
   become: false
-  gather_facts: no
+  gather_facts: true
   collections:
     - community.vmware
 
@@ -12,7 +12,7 @@
     vcenter_password: "RRvcsa@8310"
     datacenter_name: "RackRoomWin"
     vm_name: "hqriu02"
-    snapshot_name: "Snapshot_ansible_premier"
+    snapshot_name: "Snapshot_ansible_{{ ansible_date_time.iso8601 }}"
     snapshot_description: "Snapshot taken via Ansible"
     validate_certs: false
 
