@@ -3,6 +3,9 @@
   hosts: all
   become: false
   gather_facts: no
+  collections:
+    - community.vmware
+
   vars:
     vcenter_hostname: "192.168.206.60"
     vcenter_username: "Administrator@vsphere.local"
@@ -11,16 +14,18 @@
     vm_name: "hqriu02"
     snapshot_name: "Snapshot_ansible_premier"
     snapshot_description: "Snapshot taken via Ansible"
+    validate_certs: false
 
   tasks:
-    - name: Take snapshot of VM
-      vmware.vmware.vm_snapshot:
+    - name: Create snapshot of VM
+      community.vmware.vmware_guest_snapshot:
         hostname: "{{ vcenter_hostname }}"
         username: "{{ vcenter_username }}"
         password: "{{ vcenter_password }}"
-        datacenter: "{{ datacenter_name }}"
-        folder: "/{{ datacenter_name }}/Synergy_DaaS/"
+        validate_certs: "{{ validate_certs }}"
         name: "{{ vm_name }}"
         state: present
         snapshot_name: "{{ snapshot_name }}"
         description: "{{ snapshot_description }}"
+        memory: false
+
