@@ -1,7 +1,7 @@
 ---
 - name: Take VMware Snapshot of a VM
   hosts: all
-  become: true
+  become: false
   gather_facts: no
   vars:
     vcenter_hostname: "192.168.206.60"
