@@ -2,9 +2,6 @@
 - name: Take VMware Snapshot of a VM
   hosts: all
   gather_facts: no
-  collections:
-    - community.vmware
-
   vars:
     vcenter_hostname: "rrvcenter01.local.rackroom.com/"
     vcenter_username: "greg.wright@rackroom.com"
@@ -14,16 +11,17 @@
     snapshot_name: "Snapshot_ansible_premier"
     snapshot_description: "Snapshot taken via Ansible"
     validate_certs: false
+    ansible_python_interpreter: /usr/bin/python[3.10]
 
   tasks:
     - name: Take snapshot of VM
-      community.vmware.vmware_guest_snapshot:
+      vmware.vmware.vm_snapshot:
         hostname: "{{ vcenter_hostname }}"
         username: "{{ vcenter_username }}"
         password: "{{ vcenter_password }}"
         datacenter: "{{ datacenter_name }}"
         validate_certs: "{{ validate_certs }}"
-        folder: "/RackRoomWin/Synergy_DaaS/"
+        folder: "/{{ datacenter_name }}/Synergy_DaaS/"
         name: "{{ vm_name }}"
         state: present
         snapshot_name: "{{ snapshot_name }}"
