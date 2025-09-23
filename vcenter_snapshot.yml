@@ -22,10 +22,11 @@
         hostname: "{{ vcenter_hostname }}"
         username: "{{ vcenter_username }}"
         password: "{{ vcenter_password }}"
+        datacenter: "{{ datacenter_name }}"
+        folder: "/{{ datacenter_name }}/Synergy_DaaS/"
         validate_certs: "{{ validate_certs }}"
         name: "{{ vm_name }}"
         state: present
         snapshot_name: "{{ snapshot_name }}"
         description: "{{ snapshot_description }}"
-        memory: false
 
