@@ -5,8 +5,8 @@
   gather_facts: no
   vars:
     vcenter_hostname: "rrvcenter01.local.rackroom.com/"
-    vcenter_username: "greg.wright@rackroom.com"
-    vcenter_password: "IP1923qe@"
+    vcenter_username: "Administrator@vsphere.local"
+    vcenter_password: "RRvcsa@8310"
     datacenter_name: "RackRoomWin"
     vm_name: "hqriu02"
     snapshot_name: "Snapshot_ansible_premier"
