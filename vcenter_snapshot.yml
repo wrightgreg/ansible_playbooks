@@ -1,6 +1,7 @@
 ---
 - name: Take VMware Snapshot of a VM
   hosts: all
+  become: true
   gather_facts: no
   vars:
     vcenter_hostname: "rrvcenter01.local.rackroom.com/"
